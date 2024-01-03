@@ -1,5 +1,6 @@
 .DS_Store
 .idea
 __pycache__
-*pyproject.user
 .directory
+*.pyproject*
+src/FoodDaily*

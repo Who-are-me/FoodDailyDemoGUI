@@ -1,0 +1,6 @@
+[submodule "FoodDaily"]
+	path = FoodDaily
+	url = https://github.com/Who-are-me/FoodDaily.git
+[submodule "src/FoodDaily"]
+	path = src/FoodDaily
+	url = https://github.com/Who-are-me/FoodDaily.git
