@@ -1,9 +1,0 @@
-{
-    "files": [
-                "main.py",
-                "ai_model.py",
-                "ui_form.py",
-                "test.py",
-                "form.ui"
-             ]
-}
