@@ -118,3 +118,4 @@ class Widget(QWidget):
         pixmap = QPixmap(fname[0])
         pixmap = pixmap.scaled(500, 500, QtCore.Qt.KeepAspectRatio)
         self.ui.lb_image.setPixmap(pixmap)
+
