@@ -1,0 +1,9 @@
+{
+    "files": [
+                "main.py",
+                "src/window.py",
+                "src/ai_model.py",
+                "src/ui_form.py",
+                "src/form.ui"
+             ]
+}
