@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>744</width>
-    <height>484</height>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,16 +29,13 @@
    </item>
    <item row="17" column="1" colspan="7">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="3">
-      <widget class="QPushButton" name="pb_start">
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
-        </size>
-       </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item row="1" column="0">
+      <widget class="QCheckBox" name="cb_show_info">
        <property name="text">
-        <string>Start</string>
+        <string>Show Details Info (only cal.)</string>
        </property>
       </widget>
      </item>
@@ -49,7 +46,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
+     <item row="1" column="3">
       <widget class="QPushButton" name="pb_load_image">
        <property name="maximumSize">
         <size>
@@ -62,10 +59,23 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QCheckBox" name="cb_show_info">
+     <item row="1" column="4">
+      <widget class="QPushButton" name="pb_start">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
-        <string>Show Details Info (only cal.)</string>
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="le_compress">
+       <property name="placeholderText">
+        <string>compress leverl: 1</string>
        </property>
       </widget>
      </item>

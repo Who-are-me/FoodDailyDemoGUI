@@ -36,6 +36,18 @@ class Widget(QWidget):
         asyncio.run(self.async_constructor())
 
 
+    def set_compress_level(self):
+        # set compress level for image size
+        self.compress_level = 1
+
+        if self.ui.le_compress.text().isdigit():
+            self.compress_level = int(self.ui.le_compress.text())
+
+        print("DEBUG: compress_image_level", self.compress_level)
+        w, h = self.image.size
+        self.compressed_image = self.image.resize((int(w/self.compress_level), int(h/self.compress_level)))
+
+
     def get_classes_with_calories(self, name='data_csv/calories.csv'):
         df_classes = pd.read_csv(name)
         classes = dict()
@@ -53,9 +65,11 @@ class Widget(QWidget):
     # FIXME make async
     async def async_ai(self, classes: list = None):
         st = time.time()
+        self.set_compress_level()
+
         lprobs = ai.ai_calculate(
                     self.classes if classes == None else classes,
-                    self.image,
+                    self.compressed_image,
                     self.ai_processor,
                     self.ai_model)
         answer = self.classes[lprobs.index(max(lprobs))] if classes == None else classes[lprobs.index(max(lprobs))]
@@ -67,9 +81,11 @@ class Widget(QWidget):
 
     def work_ai_by_multilevel(self, is_category = False, classes: list = None, classes_calories: list = None):
         st = time.time()
+        self.set_compress_level()
+
         lprobs = ai.ai_calculate(
             self.classes if classes == None else classes,
-            self.image,
+            self.compressed_image,
             self.ai_processor,
             self.ai_model)
         answer = self.classes[lprobs.index(max(lprobs))] if classes == None else classes[lprobs.index(max(lprobs))]
@@ -106,13 +122,12 @@ class Widget(QWidget):
 
             asyncio.run(self.async_ai())
 
+
     @Slot()
     def slot_load_image(self):
         fname = QtWidgets.QFileDialog.getOpenFileName(dir=f"{expanduser('~')}/Downloads", filter="Image Files (*.png *.jpg *.jpeg)")
         self.ui.lb_file_name.setText(f"FILE NAME: {fname[0]}")
         self.image = Image.open(fname[0])
-        w, h = self.image.size
-        self.image = self.image.resize((int(w/2), int(h/2)))
         # set image to label
         pixmap = QPixmap(fname[0])
         pixmap = pixmap.scaled(500, 500, QtCore.Qt.KeepAspectRatio)

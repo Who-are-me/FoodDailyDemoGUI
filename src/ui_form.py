@@ -16,14 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+    QLayout, QLineEdit, QPushButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(744, 484)
+        Widget.resize(744, 411)
         self.gridLayout_2 = QGridLayout(Widget)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.lb_file_name = QLabel(Widget)
@@ -34,11 +34,11 @@ class Ui_Widget(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.pb_start = QPushButton(Widget)
-        self.pb_start.setObjectName(u"pb_start")
-        self.pb_start.setMaximumSize(QSize(50, 16777215))
+        self.gridLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.cb_show_info = QCheckBox(Widget)
+        self.cb_show_info.setObjectName(u"cb_show_info")
 
-        self.gridLayout.addWidget(self.pb_start, 1, 3, 1, 1)
+        self.gridLayout.addWidget(self.cb_show_info, 1, 0, 1, 1)
 
         self.cb_use_calories_classes = QCheckBox(Widget)
         self.cb_use_calories_classes.setObjectName(u"cb_use_calories_classes")
@@ -49,12 +49,18 @@ class Ui_Widget(object):
         self.pb_load_image.setObjectName(u"pb_load_image")
         self.pb_load_image.setMaximumSize(QSize(80, 16777215))
 
-        self.gridLayout.addWidget(self.pb_load_image, 1, 2, 1, 1)
+        self.gridLayout.addWidget(self.pb_load_image, 1, 3, 1, 1)
 
-        self.cb_show_info = QCheckBox(Widget)
-        self.cb_show_info.setObjectName(u"cb_show_info")
+        self.pb_start = QPushButton(Widget)
+        self.pb_start.setObjectName(u"pb_start")
+        self.pb_start.setMaximumSize(QSize(50, 16777215))
 
-        self.gridLayout.addWidget(self.cb_show_info, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.pb_start, 1, 4, 1, 1)
+
+        self.le_compress = QLineEdit(Widget)
+        self.le_compress.setObjectName(u"le_compress")
+
+        self.gridLayout.addWidget(self.le_compress, 1, 2, 1, 1)
 
 
         self.gridLayout_2.addLayout(self.gridLayout, 17, 1, 1, 7)
@@ -127,10 +133,11 @@ class Ui_Widget(object):
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
         self.lb_file_name.setText(QCoreApplication.translate("Widget", u"FILE NAME:", None))
-        self.pb_start.setText(QCoreApplication.translate("Widget", u"Start", None))
+        self.cb_show_info.setText(QCoreApplication.translate("Widget", u"Show Details Info (only cal.)", None))
         self.cb_use_calories_classes.setText(QCoreApplication.translate("Widget", u"Use Calories Classes", None))
         self.pb_load_image.setText(QCoreApplication.translate("Widget", u"Load image", None))
-        self.cb_show_info.setText(QCoreApplication.translate("Widget", u"Show Details Info (only cal.)", None))
+        self.pb_start.setText(QCoreApplication.translate("Widget", u"Start", None))
+        self.le_compress.setPlaceholderText(QCoreApplication.translate("Widget", u"compress leverl: 1", None))
         self.lb_image.setText(QCoreApplication.translate("Widget", u"Not load image", None))
         self.lb_time.setText(QCoreApplication.translate("Widget", u"TIME:", None))
         self.lb_percent.setText(QCoreApplication.translate("Widget", u"PERSENT:", None))
